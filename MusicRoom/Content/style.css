@@ -1,0 +1,300 @@
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+    direction: rtl;
+    image-rendering: optimizeQuality;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+
+body {
+    background-color:#fbfbfb;
+    font-family: Assistant;
+    margin: 0;
+    direction: rtl;
+    font-size: 20px;
+}
+/*footer is actually the notifications box, once used to be in the bottom of the page*/
+.footer {
+    cursor: default;
+    vertical-align: central;   
+    background-color: #00c854;
+    width: 20px;
+    height: 20px;
+    font-weight: lighter;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.20);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+    padding:10px;
+    border-radius: 2px;
+    text-align: center;
+    font-size: 18px;
+    top: 20px;
+    position: absolute;
+}
+
+#links {
+    background-color: #3e3e3e;
+    width: auto;
+    color: #eeeeee;
+    padding-right: 20px;
+    padding-left: 10px;
+}
+
+.linktd {
+    padding-top:5px;
+    padding-bottom:5px;
+    text-align: center;
+    transition: 0.2s;
+    height: 75px;
+}
+
+#credit{
+    opacity: 0.4;
+    font-size: 15px;
+    position: absolute;
+    bottom: 0;
+    text-shadow: 1px 1px 5px rgba(150, 150, 150, 0.5);
+    padding-right: 10px;
+}
+
+table {
+    border-spacing: 0px 0px;
+    font-family: Assistant;
+}
+
+input,
+select,
+textarea,
+.button {
+    font-family: Assistant;
+    font-size: 18px;
+    border-width: 0px;
+    border-color: #e6e6e6;
+    border-style: solid;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+    transition: 0.3s;
+    padding: 5px;
+    outline: none;
+}
+
+    input[type="search"]::-ms-clear {
+        display: none;
+    }
+
+  
+ input [type="submit"]{
+ background-color:#34ffc1;
+}
+
+    input:hover,
+    select:hover,
+    textarea:hover,
+    .button:hover {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.10);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus,
+    .button:focus {
+        outline: none;
+        padding: 5px;
+        border-color: #71d3ff;
+        border-color: #0499c9;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.20);
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.10);
+    }
+
+textarea{
+    width: 300px;
+    height: 100px;
+}
+
+.button{
+    background-color: #00d365;
+    color: white;
+}
+
+.button:hover{
+    background-color:#02e95c;
+}
+
+a:-webkit-any-link{
+    text-decoration:none !important;
+    color: inherit;
+}
+
+#td-data {
+    text-align: center;
+    padding-left: 30px;
+    padding-top: .3em;
+    padding-bottom: .3em;
+}
+
+#tr-data{
+    background: #fbfbfb;
+    color: black;
+}
+
+    #tr-data:hover {
+        background-color: #ededed;
+        color: black;
+        cursor: pointer;
+    }
+
+#tr-data2 {
+    color: white;
+    background-color: #00c13a;
+}
+
+#tr-data3 {
+    color: white;
+    background-color: #ff7780;
+}
+
+#tr-data2:hover {
+    background-color: #00b557;
+    color: white;
+    cursor: pointer;
+}
+
+#tr-data3:hover {
+    background-color: #ff5858;
+    color: white;
+    cursor: pointer;
+}
+
+#tr-datacard{
+    background-color: #008aa9;
+    color: white;
+}
+
+#td-datacard{
+     background-color: #008aa9;
+     color: white;
+}
+
+#mycomment {
+    margin-right: 25%;
+    width: 400px;
+    background: #008aa9;
+    color: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#othercomment {
+    margin-right: 50%;
+    width: 400px;
+    background: white;
+    color: black;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.mlistdiv {
+    background-color: #00b9ff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    padding: 5px;
+    border-radius: 2px;
+    color: white;
+    display: inline-block;
+    margin-left: 5px;
+    transition: 0.3s;
+}
+
+    .mlistdiv:hover {
+        background-color: #35cdff;
+        cursor: default;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    }
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+    .tooltip .tooltiptext {
+        font-size: 16px;
+        opacity: 0.8;
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        top: -5px;
+        left: 110%;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 100%;
+            margin-top: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent black transparent transparent;
+        }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
+
+a:hover {
+    color: #00d365;
+    transition: 0.4s;
+}
+a{
+    transition:0.4s;
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-in;
+    animation-iteration-count: infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-30px);
+    }
+
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+.bounce {
+    animation-name: bounce;
+}
+
+#notiList {
+    border-spacing: 0px;
+    margin-right: auto;
+    margin-left: auto;
+    width: auto;
+    display: none;
+    position: absolute;
+}

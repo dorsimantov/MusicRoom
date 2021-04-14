@@ -1,0 +1,52 @@
+﻿@model MusicRoom.Models.User
+
+@{
+    ViewBag.Title = Html.DisplayFor(model => model.FullName);
+
+    //Get lists of instruments and bands from controller
+    var instruments = Model.Instruments.ToList<MusicRoom.Models.Instrument>();
+    var bands = Model.Bands.ToList<MusicRoom.Models.Band>();
+    var genres = Model.Genres.ToList<MusicRoom.Models.Genre>();
+
+}
+
+<table cellpadding="10" style="width:100%">
+    
+    <tr>
+        <td> @Html.DisplayNameFor(model => model.Username) </td>
+        <td> @Html.DisplayFor(model => model.Username) </td>
+    </tr>
+    <tr>
+        <td> @Html.DisplayNameFor(model => model.Instruments) </td>
+        <td>
+            @{
+                foreach (var instrument in instruments)
+                {
+                    @(Html.ActionLink(instrument.Name, "Search", "User", new { searchString = instrument.Name }, new { @class = "generatedLink" }))
+                }
+            }
+        </td>
+    </tr>
+    <tr>
+        <td> @Html.DisplayNameFor(model => model.Bands) </td>
+        <td>
+            @{
+                foreach (var band in bands)
+                {
+                    @(Html.ActionLink(band.BandName, "BandInfo", "Band", new { Id = band.Id }, new { @class = "generatedLink" }))
+                }
+            }
+        </td>
+    </tr>
+    <tr>
+        <td> @Html.DisplayNameFor(model => model.Genres) </td>
+        <td>
+            @{
+                foreach (var genre in genres)
+                {
+                    @(Html.ActionLink(genre.Name, "Search", "User", new { searchString = genre.Name }, new { @class = "generatedLink" }))
+                }
+            }
+        </td>
+    </tr>
+</table>

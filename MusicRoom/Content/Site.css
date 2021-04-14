@@ -1,0 +1,278 @@
+﻿html {
+    cursor: default;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    padding-top: 0;
+    padding-bottom: 20px;
+    margin: 0;
+    direction: rtl;
+    background-color: #f7f7f7;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-family: Assistant;
+    font-size: 20px;
+    color: #3e3e3e;
+    display: table;
+    width: 91%;
+}
+
+#page-content {
+    display: table-cell;
+    padding-right: 3%;
+    width: 60%;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+    box-shadow: -1px 1px 7px -2px rgba(0, 0, 0, 0.1);
+    border: none;
+    font-family: Assistant;
+    font-size: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    transition: 0.3s;
+}
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        outline: none !important;
+        border-color: lightblue !important;
+        box-shadow: -1px 1px 7px -2px rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+    }
+
+    input:hover,
+    select:hover,
+    textarea:hover {
+        box-shadow: -1px 1px 7px -2px rgba(0, 0, 0, 0.2);
+        outline: none !important;
+        border-color: #9c9c9c;
+        transition: 0.3s;
+    }
+
+/* Another attempt to take out the ugly highlighting of buttons on focus */
+*:focus {
+    outline: none !important;
+}
+
+@font-face {
+    font-family: Dina_TalBal;
+    src: url(/fonts/Dina_TalBal.otf)
+}
+
+@font-face {
+    font-family: Heebo;
+    src: url(/fonts/Heebo-Light.ttf);
+    font-weight: lighter;
+}
+
+@font-face {
+    font-family: Heebo;
+    src: url(/fonts/Heebo-Regular.ttf);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Heebo;
+    src: url(/fonts/Heebo-Bold.ttf);
+    font-weight: bold;
+}
+
+/* Styling the header which includes the title */
+header {
+    font-family: Dina_TalBal;
+    font-size: 70px;
+    padding-right: 2%;
+    background-color: #3e3e3e;
+    color: white;
+}
+
+/* Styling the footer which includes the credit */
+footer {
+    font-family: Assistant;
+    color: #a3a3a3;
+    font-size: 14px;
+    bottom: 5px;
+    left: 10px;
+    position: fixed;
+}
+
+/* Divs for nav-bar and nav-links */
+.page-menu {
+    width: 9%;
+    margin-top: 0 !important;
+    display: table-cell;
+    border-left: 1px #eeeeee solid;
+}
+
+    .page-menu a {
+        color: #3e3e3e;
+        font-size: 20px;
+        display: block;
+        padding-right: 8px;
+        padding-left: 8px;
+        padding-bottom: 3px;
+        padding-top: 3px;
+        margin-bottom: 5%;
+        transition: 0.2s;
+        text-decoration: none !important;
+        background-color: lightskyblue;
+        margin-left: 5%;
+        box-shadow: -1px 1px 7px -2px rgba(0, 0, 0, 0.1);
+        color: white;
+    }
+
+        .page-menu a:hover {
+            transition: 0.2s;
+            margin-right: 5%;
+            margin-left: 5%;
+            background-color: deepskyblue;
+        }
+
+/* Get rid of ugly underline and font in links */
+a{
+    text-decoration: none!important;
+    font-family: Assistant!important;
+    color: inherit;
+}
+
+/* For submit buttons etc. */
+
+.button {
+    background-color: limegreen;
+    border: none;
+    font-family: Assistant;
+    color: white;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+    .button:hover {
+        background-color: yellowgreen;
+        transition: 0.3s;
+    }
+
+    .button:focus {
+        outline: 0 !important;
+    }
+
+/* Button that adds an element to a list in a form */
+
+.addElement {
+    color: #5fbfff;
+    transition: 0.1s;
+    margin-left:0;
+}
+
+.addElement:hover {
+        color: #11afff;
+        transition: 0.1s;
+}
+
+/* List member, action link (NOT in nav-bar) */
+
+.listElement {
+    border-radius: 2px;
+    box-shadow: -1px 1px 7px -2px rgba(0, 0, 0, 0.1);
+    color: white;
+    transition: 0.1s;
+    background-color: #5fbfff;
+    font-family: Assistant !important;
+    padding-bottom: initial !important;
+    padding-top: initial !important;
+}
+
+.generatedLink {
+    border-radius: 2px;
+    color: white;
+    transition: 0.2s;
+    background-color: deepskyblue;
+    font-family: Assistant !important;
+    margin-left: 8px;
+    padding-left: 3px;
+    padding-right: 3px;
+    box-shadow: -1px 1px 7px -2px rgba(0, 0, 0, 0.1);
+}
+
+.listElement:hover {
+    opacity: 0.8;
+    transition: 0.1s;
+}
+
+.generatedLink:hover {
+    background-color: lightskyblue;
+    transition: 0.2s;
+}
+
+.validateError{
+    color: #ff8989;
+}
+
+/* For lists such as list of bands */
+.listRow:nth-child(odd){
+    background-color: #f3f3f3;
+}
+
+
+/* Make whole row clickable */
+.listRow a{
+    display: block;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    opacity: 0.7; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    opacity: 0.7;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    opacity: 0.7;
+}
+
+.greenButton {
+    background-color: limegreen;
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    transition: 0.2s;
+    box-shadow: -1px 1px 7px -2px rgba(0, 0, 0, 0.1);
+}
+
+    .greenButton:hover {
+        background-color: yellowgreen;
+        transition: 0.2s;
+    }
+
+/* "לג'ימג'ום" */
+#jamNow {
+    padding-right: initial !important;
+    margin-left: 2%;
+    float: left;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align:central!important;
+}
+
+/* For info sections in pages, to be left of page content */
+#infoSection {
+    padding-right: 10px;
+    display: table-cell;
+    border-right: 1px #eeeeee solid;
+    color: #565656;
+    font-size: 18px;
+}

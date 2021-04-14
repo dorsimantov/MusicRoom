@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MusicRoom.Models.User>
+
+@{
+    ViewBag.Title = "נגנים";
+}
+<!DOCTYPE html>
+
+
+<table cellpadding="10" cellspacing="0" id="table">
+    @using (Html.BeginForm("Search", "User", FormMethod.Get, new { id = "searchForm" }))
+    {
+
+        @Html.TextBox("searchString", string.Empty, new { id = "searchBox", placeholder = "חיפוש" })
+    }
+    <tr>
+        <td> <b> שם מלא </b> </td>
+        <td> <b> שם משתמש </b> </td>
+        <td> <b> כלים </b> </td>
+    </tr>
+    @{ foreach (var user in Model)
+        {
+            List<string> instrumentsList = new List<string>();
+
+    <tr class="listRow">
+        <td> @Html.ActionLink(user.FullName, "UserInfo", "User", new { Id = user.Id }, null) </td>
+
+        <td> @Html.ActionLink(user.Username, "UserInfo", "User", new { Id = user.Id }, null) </td>
+
+        <td>
+            @foreach (var instrument in user.Instruments)
+            {
+                if (instrument != null)
+                {
+                    instrumentsList.Add(instrument.Name);
+                }
+            }
+            @{ string instrumentsString = string.Join(", ", instrumentsList);
+                if (instrumentsString.IsEmpty())
+                {
+                    instrumentsString = " ";
+                }
+            }
+            @Html.ActionLink(instrumentsString, "UserInfo", "User", new { Id = user.Id }, null)
+
+        </td>
+
+    </tr>
+        }
+
+    }
+</table>

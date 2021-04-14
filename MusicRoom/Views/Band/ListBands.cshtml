@@ -1,0 +1,70 @@
+﻿@model IEnumerable<MusicRoom.Models.Band>
+
+@{
+    ViewBag.Title = "הרכבים";
+}
+<!DOCTYPE html>
+
+<a href="/Band/NewBand" class="greenButton"> הרכב חדש <b>+</b></a>
+<br /> <br />
+@using (Html.BeginForm("Search", "Band", FormMethod.Get, new { id = "searchForm" }))
+{
+    @Html.TextBox("searchString", string.Empty, new { id = "searchBox", placeholder = "חיפוש" })
+}
+
+<table cellpadding="10" cellspacing="0" id="table" style="float:right">
+    <tr>
+        <td> <b> שם ההרכב </b> </td>
+        <td> <b> ז'אנרים </b> </td>
+        <td> <b> נגנים </b> </td>
+    </tr>
+    @{ foreach (var band in Model)
+        {
+            List<string> genresList = new List<string>();
+            List<string> usersList = new List<string>();
+
+            <tr class="listRow">
+                <td> @Html.ActionLink(band.BandName, "BandInfo", "Band", new { Id = band.Id }, null) </td>
+
+                <td>
+                    @foreach (var genre in band.Genres)
+                    {
+                        if (genre != null)
+                        {
+                            genresList.Add(genre.Name);
+                        }
+                    }
+                    @{ string genresString = string.Join(", ", genresList);
+                        if (genresString.IsEmpty())
+                        {
+                            genresString = " ";
+                        }
+                    }
+                    @Html.ActionLink(genresString, "BandInfo", "Band", new { Id = band.Id }, null)
+
+                </td>
+
+                <td>
+                    @foreach (var user in band.Users)
+                    {
+                        if (band != null)
+                        {
+                            usersList.Add(user.FullName);
+                        }
+                    }
+                    @{ string usersString = string.Join(", ", usersList);
+                        if (usersString.IsEmpty())
+                        {
+                            usersString = " ";
+                        }
+                    }
+
+                    @Html.ActionLink(usersString, "BandInfo", "Band", new { Id = band.Id }, null)
+
+                </td>
+
+            </tr>
+        }
+
+    }
+</table>

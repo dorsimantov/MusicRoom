@@ -1,0 +1,51 @@
+﻿@model MusicRoom.Models.PurchaseRequest
+
+@{
+    ViewBag.Title = "בקשת רכש חדשה";
+}
+<!DOCTYPE html>
+
+@using (Html.BeginForm("CreatePurchaseRequest", "PurchaseRequest"))
+{
+    @Html.AntiForgeryToken()
+
+<table cellpadding="7" style="float:right">
+    <tr>
+        <td> @Html.LabelFor(r => r.Title) </td>
+        <td> @Html.TextBoxFor(r => r.Title) </td>
+        <td class="validateError"> @Html.ValidationMessageFor(r => r.Title) </td>
+    </tr>
+    <tr>
+        <td> @Html.LabelFor(r => r.Need) </td>
+        <td> @Html.TextAreaFor(r => r.Need, new { Style = "width:100%; height:120px; margin:0; padding:0", placeholder = "למה צריך לקנות את זה?" }) </td>
+        <td class="validateError"> @Html.ValidationMessageFor(r => r.Need) </td>
+    </tr>
+    <tr>
+        <td> @Html.LabelFor(r => r.ProductNumber) </td>
+        <td> @Html.TextBoxFor(r => r.ProductNumber, new { placeholder = "אם לא ידוע, השאירו ריק" }) </td>
+        <td class="validateError"> @Html.ValidationMessageFor(r => r.ProductNumber) </td>
+    </tr>
+    <tr>
+        <td> @Html.LabelFor(r => r.ContactPhone) </td>
+        <td> @Html.TextBoxFor(r => r.ContactPhone) </td>
+        <td class="validateError"> @Html.ValidationMessageFor(r => r.ContactPhone) </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td> <input type="submit" value="אישור" class="button" style="outline:none" /> </td>
+    </tr>
+</table>
+
+    
+}
+
+<div id="infoSection">
+    כאן תוכלו להגיש בקשות רכש עבור חדר המוזיקה:
+    <br />
+    על הבקשה לקבל אישור מההנעלה ולאחר מכן אישור תקציבי מגורמי הרכש ביחידה.
+    מפני שהתהליך עשוי להיות ארוך ומייגע, אנא השתדלו להמעיט בבקשות ולכוון רק למה שבאמת צריכים.
+    <br />
+    יש להגיש בקשה נפרדת על כל מוצר.
+    במידה שהבקשה תאושר, תעודכנו על כך במייל. 
+</div>
+

@@ -1,0 +1,50 @@
+﻿@model MusicRoom.Models.Band
+
+@{
+    ViewBag.Title = Html.DisplayFor(model => model.BandName);
+
+    //Get lists of instruments and bands from model
+    var instruments = Model.Instruments.ToList<MusicRoom.Models.Instrument>();
+    var genres = Model.Genres.ToList<MusicRoom.Models.Genre>();
+    var users = Model.Users.ToList<MusicRoom.Models.User>();
+
+
+}
+
+<table cellpadding="10" style="width:100%">
+
+    <tr>
+        <td> @Html.DisplayNameFor(model => model.Instruments) </td>
+        <td>
+            @{
+                foreach (var instrument in instruments)
+                {
+                    @(Html.ActionLink(instrument.Name, "Search", "User", new { searchString = instrument.Name }, new { @class = "generatedLink" }))
+                }
+            }
+        </td>
+    </tr>
+    <tr>
+        <td> @Html.DisplayNameFor(model => model.Genres) </td>
+        <td>
+            @{
+                foreach (var genre in genres)
+                {
+                    @(Html.ActionLink(genre.Name, "Search", "User", new { searchString = genre.Name }, new { @class = "generatedLink" }))
+                }
+            }
+        </td>
+    </tr>
+    <tr>
+        <td> @Html.DisplayNameFor(model => model.Users) </td>
+        <td>
+            @{
+                foreach (var user in users)
+                {
+                    @(Html.ActionLink(user.FullName, "UserInfo", "User", new { Id = user.Id }, new { @class = "generatedLink" }))
+                }
+            }
+        </td>
+    </tr>
+
+</table>

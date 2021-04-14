@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חדר מוזיקה - @ViewBag.Title</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <header> 
+        <span style="background-color: #4dceff; border-radius: 10px">מפגש</span> <span style="color:#4dceff">הריבה</span>
+        <div id="jamNow"> @Html.ActionLink("לג'ימג'ום >>>", "UserInfo", "User", new { }, new { Style = "color:lightgreen; font-size:70px; font-family: Dina_TalBal!important" }) </div>
+    </header>
+    <!-- body-content includes both menu and page content, and designed as a table (display: table) -->
+    <div class="container body-content">
+        <div class="page-menu">
+            @Html.ActionLink("העמוד שלי", "UserInfo", "User", new { id = 0 }, null)
+            <br />
+            @Html.ActionLink("חדש בחדר", "Index", "Home")
+            @Html.ActionLink("הרכבים", "ListBands", "Band")
+            @Html.ActionLink("נגנים", "ListUsers", "User")
+            @Html.ActionLink("בקשות רכש", "NewPurchaseRequest", "PurchaseRequest")
+            @Html.ActionLink("השאלת ציוד", "NewGearRequest", "GearRequest")
+            <a id="admins"> ניעול ואדמיניסטרציה </a>
+        </div>
+        <div id="page-content">
+            <h2> @ViewBag.Title </h2>
+            @RenderBody()
+        </div>
+
+        <footer>
+            פותח על-ידי דור סימן טוב
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

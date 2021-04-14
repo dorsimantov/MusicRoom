@@ -1,0 +1,47 @@
+﻿@model MusicRoom.Models.GearRequest
+
+@{
+    ViewBag.Title = "בקשה להשאלת ציוד";
+}
+<!DOCTYPE html>
+
+@using (Html.BeginForm("CreateGearRequest", "GearRequest"))
+{
+    @Html.AntiForgeryToken()
+
+<table cellpadding="7" style="float:right">
+    <tr>
+        <td> @Html.LabelFor(r => r.Reason) </td>
+        <td> @Html.TextAreaFor(r => r.Reason, new { Style = "width:100%; height:120px; margin:0; padding:0", placeholder = "מהי סיבת ההשאלה?" }) </td>
+        <td class="validateError"> @Html.ValidationMessageFor(r => r.Reason) </td>
+    </tr>
+    <tr>
+        <td> @Html.LabelFor(r => r.Where) </td>
+        <td> @Html.TextBoxFor(r => r.Where) </td>
+        <td class="validateError"> @Html.ValidationMessageFor(r => r.Where) </td>
+    </tr>
+    <tr>
+        <td> @Html.LabelFor(r => r.StartTime) </td>
+        <td> @Html.EditorFor(r => r.StartTime) </td>
+        <td class="validateError"> @Html.ValidationMessageFor(r => r.StartTime) </td>
+    </tr>
+    <tr>
+        <td> @Html.LabelFor(r => r.EndTime) </td>
+        <td> @Html.EditorFor(r => r.EndTime) </td>
+        <td class="validateError"> @Html.ValidationMessageFor(r => r.EndTime) </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td> <input type="submit" value="אישור" class="button" style="outline:none" /> </td>
+    </tr>
+</table>
+
+
+}
+
+<div id="infoSection">
+    כאן תוכלו להגיש בקשות להשאלת ציוד מחדר המוזיקה:
+    <br />
+    על הבקשה לקבל אישור מההנעלה. ציוד יושאל אך ורק לשימוש במסגרת הצבא, חל איסור מוחלט על הוצאת ציוד מהיחידה לשימוש עצמי. מגיש הבקשה יחשב אחראי בלעדי על הציוד בזמן ההשאלה, ועליו לוודא את החזרתו לחדר המוזיקה במצב בו נלקח ובמועד שהוגדר על-ידו בטופס זה.
+</div>
+

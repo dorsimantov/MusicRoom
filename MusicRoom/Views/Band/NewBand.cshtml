@@ -1,0 +1,107 @@
+﻿
+@model MusicRoom.ViewModels.NewBandViewModel
+
+@{
+    ViewBag.Title = "הרכב חדש";
+}
+
+<!DOCTYPE html>
+
+@using (Html.BeginForm("CreateBand", "Band"))
+{
+    @Html.AntiForgeryToken()
+
+    <script>
+        function elementAdder(inputId, listTd) {
+            //check if value already exists
+            var existingElementsByClassname = document.getElementsByClassName('listElement');
+            var elementAlreadyExists = false;
+            for (i = 0; i < existingElementsByClassname.length; i++) {
+                if (existingElementsByClassname[i].innerHTML == document.getElementById(inputId).value) {
+                    elementAlreadyExists = true;            
+                    break;
+                    
+                }
+            }
+
+            if (document.getElementById(inputId).value.trim() != "" && elementAlreadyExists == false) {
+                //if field has value
+                if (document.getElementById(document.getElementById(inputId).value) == null) {
+                    //Add element
+                    //counts how many of this object exist
+                    var count = document.getElementById(inputId + "Counter").value;
+                    //div resembles the element itself
+                    var div = document.createElement('td');
+                    //hidden is a hidden field that passes the data to the controller later
+                    var hidden = document.createElement('input');
+                    hidden.type = "hidden";
+                    hidden.setAttribute("data-val", "true");
+                    hidden.setAttribute("data-val-required", "REQUIRED");
+
+                    if (inputId == "Users") {
+                        hidden.name = inputId + "[" + count + "].Username";
+                        hidden.value = document.getElementById(inputId).value;
+                    }
+                    else {
+                        hidden.name = inputId + "[" + count + "].Name";
+                        hidden.value = document.getElementById(inputId).value;
+                    }
+                    
+                    div.className = "listElement";
+                    div.id = inputId + "[" + count + "]";
+                    div.innerHTML = document.getElementById(inputId).value;
+                    document.getElementById(listTd).appendChild(div);
+                    document.getElementById(listTd).appendChild(hidden);
+                    //Empty textbox value
+                    document.getElementById(inputId).value = "";
+                    //Increase counter
+                    document.getElementById(inputId + "Counter").value++;
+                    //Remove element:
+                    div.onclick = function () {
+                        this.parentNode.removeChild(this);
+                        hidden.remove();
+                    }
+                }
+            }
+        }
+    </script>
+
+    @Html.Hidden("InstrumentsCounter", 0, new { id = "InstrumentsCounter" })
+    @Html.Hidden("GenresCounter", 0, new { id = "GenresCounter" })
+    @Html.Hidden("UsersCounter", 0, new { id = "UsersCounter" })
+
+    <table cellpadding="7">
+        <tr>
+            <td> @Html.LabelFor(b => b.Band.BandName) </td>
+            <td> @Html.TextBoxFor(b => b.Band.BandName) </td>
+            <td class="validateError"> @Html.ValidationMessageFor(b => b.Band.BandName) </td>
+        </tr>
+        <tr>
+            <td> כלים </td>
+            <td> @Html.TextBox("InstrumentsText", "", new { id = "Instruments" }) </td>
+            <td class="addElement" onclick="elementAdder('Instruments', 'InstrumentsTd')"> הוספה </td>
+            <td id="InstrumentsTd"></td>
+            <td class="validateError"> @Html.ValidationMessageFor(b => b.Band.Instruments) </td>
+        </tr>
+        <tr>
+            <td> ז'אנרים </td>
+            <td> @Html.TextBox("GenresText", "", new { id = "Genres" }) </td>
+            <td class="addElement" onclick="elementAdder('Genres', 'GenresTd')"> הוספה </td>
+            <td id="GenresTd"></td>
+            <td class="validateError"> @Html.ValidationMessageFor(b => b.Band.Genres) </td>
+        </tr>
+        <tr>
+            <td> נגנים </td>
+            <td> @Html.TextBox("UsersText", "", new { id = "Users" }) </td>
+            <td class="addElement" onclick="elementAdder('Users', 'UsersTd')"> הוספה </td>
+            <td id="UsersTd"></td>
+            <td class="validateError"> @Html.ValidationMessageFor(b => b.Band.Users) </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td> <input type="submit" value="אישור" class="button" style="outline:none" /> </td>
+        </tr>
+    </table>
+
+
+}
